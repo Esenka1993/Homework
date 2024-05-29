@@ -1,0 +1,15 @@
+my_dict = {'Lyuda': 1993, 'Dima': 1992, 'Nadya': 1956, 'Anton': 1977}
+print(my_dict)
+print(my_dict.get('Lyuda'))
+print(my_dict.get('Katya'))
+my_dict.update({'Sasha': 2001, 'Alyona': 2005})
+print(my_dict)
+print(my_dict.pop('Anton'))
+print(my_dict)
+my_set = {5, 15, 15, True, 'milk', True, 'wine', 'milk'}
+print(my_set)
+my_set.add(False)
+my_set.add(13)
+print(my_set)
+my_set.discard('wine')
+print(my_set)
