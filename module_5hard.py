@@ -40,7 +40,7 @@ class UrTube:
         new_user = User(nickname, password, age)
         self.users.append(new_user)
         self.current_user = new_user
-        print(f"Пользователь {nickname} зарегистрирован и вошел в систему.")
+
 
     def log_out(self):
         self.current_user = None
@@ -52,26 +52,35 @@ class UrTube:
 
     def add(self, *videos):
         for video in videos:
-            if video not in self.videos:
+            if video.title not in videos:
                 self.videos.append(video)
 
     def get_videos(self, search_word: str):
         results = []
-        for movie in self.videos:
-            if search_word.lower() in movie.title.lower():
-                results.append(movie.title)
+        for video in self.videos:
+            if search_word.lower() in video.title.lower():
+                results.append(video.title)
         return results
 
     def watch_video(self, movie: str):
-        if self.current_user and self.current_user.age < 18:
-            print('Вам нет 18 лет, пожалуйста, покиньте страницу')
-        elif self.current_user:
+        if self.current_user:
             for video in self.videos:
-                if movie in video.title:
+                if movie in video.title and video.adult_mode == False:
                     for i in range(1, 11):
-                        print(i, end=" > ")
+                        print(i, end = " > ")
+                        video.time_now += i
                         time.sleep(1)
+                        video.time_now = 0
                     print('Конец видео')
+                elif movie in video.title and video.adult_mode == True and self.current_user.age > 18:
+                    for i in range(1, 11):
+                        print(i, end = " > ")
+                        video.time_now += i
+                        time.sleep(1)
+                        video.time_now = 0
+                    print('Конец видео')
+                elif movie in video.title and video.adult_mode == True and self.current_user.age < 18:
+                    print('Вам нет 18 лет, пожалуйста, покиньте страницу')
         else:
             print('Войдите в аккаунт, чтобы смотреть видео')
 
@@ -91,3 +100,5 @@ ur.watch_video('Для чего девушкам парень программи
 ur.register('vasya_pupkin', 'F8098FM8fjm9jmi', 55)
 print(ur.current_user)
 ur.watch_video('Лучший язык программирования 2024 года!')
+
+
