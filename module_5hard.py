@@ -62,25 +62,26 @@ class UrTube:
                 results.append(video.title)
         return results
 
-    def watch_video(self, movie: str):
+     def watch_video(self, movie: str):
         if self.current_user:
             for video in self.videos:
-                if movie in video.title and video.adult_mode == False:
-                    for i in range(1, video.duration+1):
-                        print(i)
-                        video.time_now += i
-                        time.sleep(1)
-                        video.time_now = 0
-                    print('Конец видео')
-                if movie in video.title and video.adult_mode == True and self.current_user.age > 18:
-                    for i in range(1, video.duration+1):
-                        print(i)
-                        video.time_now += i
-                        time.sleep(1)
-                        video.time_now = 0
-                    print('Конец видео')
-                if movie in video.title and video.adult_mode == True and self.current_user.age < 18:
-                    print('Вам нет 18 лет, пожалуйста, покиньте страницу')
+                if movie in video.title:
+                    if not video.adult_mode:
+                        for i in range(1, video.duration+1):
+                            print(i)
+                            video.time_now += i
+                            time.sleep(1)
+                            video.time_now = 0
+                        print('Конец видео')
+                    if video.adult_mode and self.current_user.age > 18:
+                        for i in range(1, video.duration+1):
+                            print(i)
+                            video.time_now += i
+                            time.sleep(1)
+                            video.time_now = 0
+                        print('Конец видео')
+                    if video.adult_mode and self.current_user.age < 18:
+                        print('Вам нет 18 лет, пожалуйста, покиньте страницу')
         else:
             print('Войдите в аккаунт, чтобы смотреть видео')
 
