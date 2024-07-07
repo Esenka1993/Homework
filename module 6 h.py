@@ -26,7 +26,7 @@ class Figure:
 
     def __is_valid_sides(self, *else_sides):
         for side in else_sides:
-            if side == abs(int) and else_sides == self.sides_count:
+            if side == abs(int) and len(else_sides) == self.sides_count:
                 return True
             else:
                 return False
