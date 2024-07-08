@@ -34,7 +34,7 @@ class Figure:
     def set_sides(self, *new_sides):
         for j in new_sides:
             if len(new_sides) != self.sides_count:
-                self.__sides = self.__sides
+                self.__sides = __sides
             else:
                 self.__sides = j
 
