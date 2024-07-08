@@ -19,7 +19,7 @@ class Figure:
         if self.__is_valid_color:
             self.__color = [r, g, b]
         else:
-            self.__color = __color
+            self.__color = self.__color
 
     def get_color(self):
         return self.__color
@@ -34,7 +34,7 @@ class Figure:
     def set_sides(self, *new_sides):
         for j in new_sides:
             if len(new_sides) != self.sides_count:
-                self.__sides = __sides
+                self.__sides = self.__sides
             else:
                 self.__sides = j
 
