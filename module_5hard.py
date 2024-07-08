@@ -50,11 +50,10 @@ class UrTube:
             if login == user.nickname and password == user.password:
                 self.current_user = user
 
-    def add(self, *videos):
-        for video in videos:
-            for i in self.videos:
-                if video.title not in i.title:
-                    self.videos.append(video)
+    def add(self, *new_videos):
+        for new_video in new_videos:
+            if not any(video.title == new_video.title for video in self.videos):
+                self.videos.append(new_video)
 
     def get_videos(self, search_word: str):
         results = []
@@ -63,7 +62,7 @@ class UrTube:
                 results.append(video.title)
         return results
 
-     def watch_video(self, movie: str):
+    def watch_video(self, movie: str):
         if self.current_user:
             for video in self.videos:
                 if movie in video.title:
