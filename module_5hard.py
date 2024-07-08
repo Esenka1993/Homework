@@ -52,8 +52,9 @@ class UrTube:
 
     def add(self, *videos):
         for video in videos:
-            if video.title not in self.videos:
-                self.videos.append(video)
+            for i in self.videos:
+                if video.title not in i.title:
+                    self.videos.append(video)
 
     def get_videos(self, search_word: str):
         results = []
