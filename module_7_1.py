@@ -22,14 +22,16 @@ class Shop:
 
 
     def add(self, *products):
-        existing_products = self.get_products().split('\n')
-        for i in products:
-            if i.name not in [p.split(' - ')[0] for p in existing_products]:
-                with open(self.__file_name, 'a') as file:
-                    file.write(f"{i}\n")
-                    existing_products.append(i)
-            if i.name in [p.split(' - ')[0] for p in existing_products]:
-                print(f'Продукт {i.name} есть в магазине')
+        existing_products = self.get_products()
+        file = open(self.__file_name, 'a')
+        print(existing_products)
+        for product in products:
+            if product.name not in existing_products:
+                file.write(f'{product}\n')
+                existing_products += f'{product.name}\n'
+            else:
+                print(f'Продукт {product.name} есть в магазине')
+        file.close()
 
 s1 = Shop()
 p1 = Product('Potato', 50.5, 'Vegetables')
