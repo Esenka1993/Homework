@@ -10,7 +10,9 @@ class Product:
         return f'{self.name}, {self.weight}, {self.category}.'
 
 class Shop:
-    __file_name = 'products.txt'
+
+    def __init__(self):
+        self.__file_name = 'products.txt'
 
     def get_products(self):
         file = open(self.__file_name, 'r')
@@ -25,7 +27,8 @@ class Shop:
             if i.name not in [p.split(' - ')[0] for p in existing_products]:
                 with open(self.__file_name, 'a') as file:
                     file.write(f"{i}\n")
-            else:
+                    existing_products.append(i)
+            if i.name in [p.split(' - ')[0] for p in existing_products]:
                 print(f'Продукт {i.name} есть в магазине')
 
 s1 = Shop()
