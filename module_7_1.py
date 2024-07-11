@@ -1,4 +1,3 @@
-from pprint import pprint
 class Product:
 
     def __init__(self, name: str, weight: float, category: str):
