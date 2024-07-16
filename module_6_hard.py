@@ -53,10 +53,10 @@ class Circle(Figure):
 
     def __init__(self, color: tuple, *sides):
         super().__init__(color, sides)
-        self.__radius = __radius = sides / (2 * math.pi)
+        self.__radius = self.get_radius()
 
     def get_radius(self):
-        return self.__radius
+        return self.get_sides()[0] / (2 * math.pi)
 
 
     def get_square(self):
@@ -68,9 +68,15 @@ class Triangle(Figure):
 
     def __init__(self, color: tuple, *sides):
         super().__init__(color, sides)
-        self.__height =
+        self.__height = self.get_height()
+
+    def get_height(self):
+        p = sum(self.get_sides()) / 2
+        return ((2 * math.sqrt(p * (p - self.get_sides()[0]) * (p - self.get_sides()[1]) * (p - self.get_sides()[2]))) /
+                self.get_sides()[0])
 
     def get_square(self):
+        return (self.get_height() * self.get_sides()[0]) / 2
 
 
 
@@ -81,14 +87,25 @@ class Cube(Figure):
     def __init__(self, color: tuple, *sides):
         super().__init__(color, sides)
 
-
     def get_volume(self):
-        for i in self.__sides:
-            volume = ((self.__sides(i)**3))
-        return volume
+        return self.__sides[0] ** 2 * 6
+
 
 circle1 = Circle((200, 200, 100), 10)
+cube1 = Cube((222, 35, 130), 6)
 circle1.set_color(55, 66, 77)
 print(circle1.get_color())
-circle1.set_sides(15)
+cube1.set_color(300, 70, 15)  # Не изменится
+print(cube1.get_color())
+
+# Проверка на изменение сторон:
+cube1.set_sides(5, 3, 12, 4, 5)  # Не изменится
+print(cube1.get_sides())
+circle1.set_sides(15)  # Изменится
 print(circle1.get_sides())
+
+# Проверка периметра (круга), это и есть длина:
+print(len(circle1))
+
+# Проверка объёма (куба):
+print(cube1.get_volume())
