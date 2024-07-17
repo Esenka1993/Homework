@@ -22,7 +22,7 @@ class WordsFinder:
         word_positions = {}
         all_words = self.get_all_words()
         for file_name, words in all_words.items():
-            if word in words:
+            if word.lower() in words:
                 word_positions[file_name] = words.index(word)
         return word_positions
 
@@ -30,7 +30,8 @@ class WordsFinder:
         word_counts = {}
         all_words = self.get_all_words()
         for file_name, words in all_words.items():
-            word_counts[file_name] = words.count(word)
+            if word.lower() in words:
+                word_counts[file_name] = words.count(word)
         return word_counts
 
 finder2 = WordsFinder('test_file.txt')
