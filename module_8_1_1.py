@@ -1,11 +1,9 @@
 def add_everything_up(a, b):
     try:
         result = a + b
-        #print(result)
+        return result
     except TypeError:
-        print(str(a),str(b))
-    else:
-        print(result)
+        return str(a), str(b)
 
 print(add_everything_up(123.456, 'строка'))
 print(add_everything_up('яблоко', 4215))
