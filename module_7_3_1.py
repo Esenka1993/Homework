@@ -6,19 +6,18 @@ class WordsFinder:
         all_words = {}
         for file_name in self.file_names:
             with open(file_name, 'r', encoding ='utf-8') as file:
-                words = []
                 words = file.read().lower().replace(',', '').replace('.', '').replace('=', '').replace('!', '').replace('?',
                                                                                                             '').replace(
                         ';', '').replace(':', '').replace(' - ', ' ').split()
                 all_words[file_name] = words
-            return all_words
+        return all_words
 
     def find(self, word):
         word_positions = {}
         all_words = self.get_all_words()
         for file_name, words in all_words.items():
             if word.lower() in words:
-                word_positions[file_name] = words.index(word)
+                word_positions[file_name] = (words.index(word.lower())+1)
         return word_positions
 
     def count(self, word):
@@ -26,7 +25,7 @@ class WordsFinder:
         all_words = self.get_all_words()
         for file_name, words in all_words.items():
             if word.lower() in words:
-                word_counts[file_name] = words.count(word)
+                word_counts[file_name] = words.count(word.lower())
         return word_counts
 
 finder2 = WordsFinder('test_file.txt')
