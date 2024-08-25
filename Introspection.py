@@ -6,12 +6,12 @@ class At_Ollivanders:
         self.power = power
 
     def wand_choice(self):
-        wood = ['oak', 'elm tree', 'aspen', 'cherry tree', 'chestnut']
+        wood = ['Oak', 'Elm tree', 'Aspen', 'Cherry tree', 'Chestnut']
         core = ['the Dragon`s Heart Vein', 'Unicorn hair', 'Phoenix feather', 'Vale hair', 'Thestral hair']
         if self.age >= 11 and self.power:
             p1 = random.choice(wood)
             p2 = random.choice(core)
-            print(f"Here is your wand: {p1}, {p2}!")
+            print(f"Here is your wand: made of {p1} with core of {p2}!")
         else:
             print("Muggles and youngsters are not allowed in!")
 
