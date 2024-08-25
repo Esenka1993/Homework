@@ -11,9 +11,9 @@ class At_Ollivanders:
         if self.age >= 11 and self.power:
             p1 = random.choice(wood)
             p2 = random.choice(core)
-            print(f"Вот твоя палочка: {p1}, {p2}!")
+            print(f"Here is your wand: {p1}, {p2}!")
         else:
-            print("Маглам и недорослям вход воспрещен!")
+            print("Muggles and youngsters are not allowed in!")
 
 
 def introspection_info(obj):
