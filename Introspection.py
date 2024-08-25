@@ -8,8 +8,12 @@ class At_Ollivanders:
     def wand_choice(self):
         wood = ['oak', 'elm tree', 'aspen', 'cherry tree', 'chestnut']
         core = ['the Dragon`s Heart Vein', 'Unicorn hair', 'Phoenix feather', 'Vale hair', 'Thestral hair']
-        if self.age >= 11 and self.power:
-            return random.choice(wood), random.choice(core)
+            if self.age >= 11 and self.power:
+                p1 = random.choice(wood)
+                p2 = random.choice(core)
+                print(f"Вот твоя палочка: {p1}, {p2}!")
+            else:
+                print("Маглам и недорослям вход воспрещен!")
 
 
 def introspection_info(obj):
