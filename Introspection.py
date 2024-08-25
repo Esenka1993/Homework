@@ -3,7 +3,7 @@ import random
 class At_Ollivanders:
     def __init__(self, age: int, power: bool):
         self.age = age
-        self.power = True
+        self.power = power
 
     def wand_choice(self):
         wood = ['oak', 'elm tree', 'aspen', 'cherry tree', 'chestnut']
