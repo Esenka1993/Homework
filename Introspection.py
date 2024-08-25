@@ -12,7 +12,7 @@ class At_Ollivanders:
             return random.choice(wood), random.choice(core)
 
     def check_for_wand(self):
-        if self.age > 11 and self.power:
+        if self.age >= 11 and self.power:
             print(f'Можешь выбрать палочку!')
 
 
