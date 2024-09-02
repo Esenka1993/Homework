@@ -17,11 +17,12 @@ class At_Ollivanders:
 
 
 def introspection_info(obj):
-    print(type(obj))
-    print(hasattr(obj, 'age'))
-    print(dir(obj))
-    print(inspect.getmodule(obj))
-    print(inspect.isclass(obj))
-
-myWand = At_Ollivanders(12, True)
-introspection_info(myWand)
+   info = {'Тип объекта': type(obj),
+            'Наличие атрибута': hasattr(obj, 'age'),
+            'Пространство имен': dir(obj),
+            'В каком мы модуле': inspect.getmodule(obj),
+            'Проверка классовости': inspect.isclass(obj)}
+    return info
+myWand = At_Ollivanders(50, False)
+obj_info = introspection_info(myWand)
+print(obj_info)
