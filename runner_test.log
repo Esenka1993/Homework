@@ -1,0 +1,16 @@
+2024-09-12 22:09:17,561 | WARNING | Неверный тип данных для объекта Runner
+Traceback (most recent call last):
+  File "D:\LyudaPython\pythonProject1\module_12_4.py", line 65, in test_run
+    r2 = Runner(5)
+         ^^^^^^^^^
+  File "D:\LyudaPython\pythonProject1\module_12_4.py", line 10, in __init__
+    raise TypeError(f'Имя может быть только строкой, передано {type(name).__name__}')
+TypeError: Имя может быть только строкой, передано int
+2024-09-12 22:09:17,562 | WARNING | Неверная скорость для Runner
+Traceback (most recent call last):
+  File "D:\LyudaPython\pythonProject1\module_12_4.py", line 58, in test_walk
+    r1 = Runner('Вася', -3)
+         ^^^^^^^^^^^^^^^^^^
+  File "D:\LyudaPython\pythonProject1\module_12_4.py", line 15, in __init__
+    raise ValueError(f'Скорость не может быть отрицательной, сейчас {speed}')
+ValueError: Скорость не может быть отрицательной, сейчас -3
