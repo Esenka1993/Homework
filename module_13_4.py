@@ -11,6 +11,7 @@ dp = Dispatcher(bot, storage=MemoryStorage())
 @dp.message_handler(commands=['start'])
 async def start(message):
     await message.answer('Привет, я - бот, помогающий твоему здоровью!')
+    
 class UserState(StatesGroup):
     age = State()
     growth = State()
@@ -43,9 +44,6 @@ async def send_calories(message, state):
     calories = (10 * w) + (6.25 * g) - (5 * a) + 5
     await message.answer(f"Норма калорий для Вас равна {calories}")
     await state.finish()
-
-
-
 
 if __name__=='__main__':
     executor.start_polling(dp, skip_updates=True)
