@@ -1,10 +1,10 @@
 import inspect
 import random
+import pprint
 class At_Ollivanders:
     def __init__(self, age: int, power: bool):
         self.age = age
         self.power = power
-
     def wand_choice(self):
         wood = ['Oak', 'Elm tree', 'Aspen', 'Cherry tree', 'Chestnut']
         core = ['the Dragon`s Heart Vein', 'Unicorn hair', 'Phoenix feather', 'Vale hair', 'Thestral hair']
@@ -17,12 +17,22 @@ class At_Ollivanders:
 
 
 def introspection_info(obj):
-   info = {'Тип объекта': type(obj),
-            'Наличие атрибута': hasattr(obj, 'age'),
-            'Пространство имен': dir(obj),
+    attributes = []
+    methods = []
+    for atr in dir(obj):
+        if callable(getattr(obj, atr)):
+            attributes.append(atr)
+        else:
+            methods.append(atr)
+    info = {'Тип объекта': type(obj),
+            'Атрибуты': attributes,
+            'Методы': methods,
             'В каком мы модуле': inspect.getmodule(obj),
             'Проверка классовости': inspect.isclass(obj)}
     return info
 myWand = At_Ollivanders(50, False)
 obj_info = introspection_info(myWand)
-print(obj_info)
+pprint.pprint(obj_info)
+number_info = introspection_info(42)
+pprint.pprint(number_info)
+
