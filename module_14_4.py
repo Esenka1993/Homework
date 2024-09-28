@@ -7,7 +7,7 @@ import asyncio
 from crud_functions import initiate_db, get_all_products
 initiate_db()
 
-api = '7405481807:AAGuWdeXHTjHe7Q581rYmdzwPCzLRkuBJZ8'
+api = ''
 bot = Bot(token=api)
 dp = Dispatcher(bot, storage=MemoryStorage())
 kb = ReplyKeyboardMarkup(resize_keyboard=True)
