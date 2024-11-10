@@ -10,7 +10,7 @@ async def get_users() -> dict:
 
 @app.post("/user/{username}/{age}")
 async def create_users(username: Annotated[str, Path(min_length=5, max_length=20, description='Enter username', example='UrbanUser')],
-                   age: int = Path(ge=18, le=120, description='Enter age', example='24')) -> dict:
+                   age: int = Path(ge=18, le=120, description='Enter age', example='24')):
     max_key = max(int(key) for key in users.keys())
     new_user_id = str(max_key + 1)
     users[new_user_id] = f"Имя: {username}, возраст: {age}"
